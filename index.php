@@ -20,13 +20,13 @@ define('DB_PASSWORD', '');
 
 
 //mail
-define('MAIL_HOST','smtp.gmail.com');
-define('SMTP_AUTH',true);
-define('MAIL_USERNAME','salesi52201@gmail.com');
-define('MAIL_PASSWORD','jeam vxfc ljnv zmjf ');
-define('MAIL_PORT',587);
-define('SENDER_MAIL','salesi52201@gmail.com');
-define('SENDER_NAME','میثم ثالثی');
+define('MAIL_HOST', 'smtp.gmail.com');
+define('SMTP_AUTH', true);
+define('MAIL_USERNAME', 'salesi52201@gmail.com');
+define('MAIL_PASSWORD', 'jeam vxfc ljnv zmjf ');
+define('MAIL_PORT', 587);
+define('SENDER_MAIL', 'salesi52201@gmail.com');
+define('SENDER_NAME', 'میثم ثالثی');
 
 
 require_once 'database/DataBase.php';
@@ -47,17 +47,18 @@ require_once 'activities/Auth/Auth.php';
 
 // $db = new database\Database();
 
-spl_autoload_register(function($className){
+spl_autoload_register(function ($className) {
     $path = BASE_PATH . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR;
-    $className = str_replace('\\' , DIRECTORY_SEPARATOR , $className);
-    include$path . $className . '.php';
+    $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
+    include $path . $className . '.php';
 });
 
 
 // $auth = new Auth();
 // $auth->sendMail('salesi52201@gmail.com' , 'test' , '<p>test</p>');
 
-function jalaliDate($date){
+function jalaliDate($date)
+{
     return \Parsidev\Jalali\jdate::forge($date)->format('datetime');
 }
 
@@ -271,7 +272,7 @@ uri('admin/menu/delete/{id}', 'Admin\Menu', 'delete');
 
 
 //websetting
-uri('admin/websetting', 'Admin\Websetting', 'index'); 
+uri('admin/websetting', 'Admin\Websetting', 'index');
 uri('admin/websetting/edit/{id}', 'Admin\Websetting', 'edit');
 uri('admin/websetting/update', 'Admin\Websetting', 'update', 'POST');
 
@@ -279,12 +280,17 @@ uri('admin/websetting/update', 'Admin\Websetting', 'update', 'POST');
 
 //Auth
 
-uri('register', 'Auth\Auth', 'register'); 
-uri('register/store', 'Auth\Auth', 'registerStore' , 'POST'); 
-uri('activation/{verify_token}', 'Auth\Auth', 'activation'); 
+uri('register', 'Auth\Auth', 'register');
+uri('register/store', 'Auth\Auth', 'registerStore', 'POST');
+uri('activation/{verify_token}', 'Auth\Auth', 'activation');
 
-uri('login', 'Auth\Auth', 'login'); 
-uri('chek_login', 'Auth\Auth', 'chek_login' , 'POST'); 
+uri('login', 'Auth\Auth', 'login');
+uri('logout', 'Auth\Auth', 'logout');
+uri('chek_login', 'Auth\Auth', 'chek_login', 'POST');
+uri('forgot', 'Auth\Auth', 'forgot');
+uri('forgot/request', 'Auth\Auth', 'forgotRequest', 'POST');
+uri('reset-password-form/{forgot_token}', 'Auth\Auth', 'resetPasswordView');
+uri('reset-password/{forgot_token}', 'Auth\Auth', 'resetPassword' , 'POST');
 
 
 echo '404_ page not found';
