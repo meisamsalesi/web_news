@@ -38,6 +38,7 @@ require_once 'activities/Admin/Comment.php';
 require_once 'activities/Admin/User.php';
 require_once 'activities/Admin/Menu.php';
 require_once 'activities/Admin/Websetting.php';
+require_once 'activities/Admin/Dashboard.php';
 
 
 
@@ -210,6 +211,12 @@ function dd($var)
     exit();
 
 }
+//dashboard
+
+uri('admin', 'Admin\Dashboard', 'index');
+
+
+
 
 //category
 
