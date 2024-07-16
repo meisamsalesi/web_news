@@ -23,6 +23,13 @@ class Dashboard extends Admin
     $commentUnseenCount = $db->select('SELECT COUNT(*) FROM comment WHERE status = "unseen"')->fetch();
     $commentApprovedCount = $db->select('SELECT COUNT(*) FROM comment WHERE status = "approved"')->fetch();
 
+    $mostViewPosts = $db->select('SELECT * FROM posts ORDER BY view DESC LIMIT 0,5')->fetchAll();
+
+    $mostCommentedPosts = $db->select('SELECT posts.id , posts.title , COUNT(comment.post_id) as comment_count FROM posts LEFT JOIN comment ON posts.id = comment.post_id GROUP BY posts.id ORDER BY comment_count DESC LIMIT 0,5')->fetchAll();
+
+    $lastComments = $db->select('SELECT comment.id , comment.comment, comment.status , users.username FROM comment,users WHERE comment.user_id = users.id ORDER BY comment.created_at DESC LIMIT 0,5')->fetchAll();
+
+    
     
     
     require_once (BASE_PATH . '/template/admin/dashboard/index.php');

@@ -27,7 +27,7 @@ require_once (BASE_PATH . '/template/admin/layouts/header.php');
                     <option value="" <?php if($menu['parent_id'] == NULL) echo 'selected';?>>root</option>
                     <?php foreach($menus as $selectmenu) { 
                         if($menu['id'] != $selectmenu['id']){?>
-                        <option value="<?= $menu['id'] ?>" <?php if($menu['parent_id'] == $selectmenu['id']){
+                        <option value="<?= $selectmenu['id'] ?>" <?php if($menu['parent_id'] == $selectmenu['id']){   
                           echo 'selected';
                         } ?>>
                             <?= $selectmenu['name'] ?>

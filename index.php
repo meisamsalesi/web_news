@@ -39,6 +39,7 @@ require_once 'activities/Admin/User.php';
 require_once 'activities/Admin/Menu.php';
 require_once 'activities/Admin/Websetting.php';
 require_once 'activities/Admin/Dashboard.php';
+require_once 'activities/App/Home.php';
 
 
 
@@ -298,6 +299,16 @@ uri('forgot', 'Auth\Auth', 'forgot');
 uri('forgot/request', 'Auth\Auth', 'forgotRequest', 'POST');
 uri('reset-password-form/{forgot_token}', 'Auth\Auth', 'resetPasswordView');
 uri('reset-password/{forgot_token}', 'Auth\Auth', 'resetPassword' , 'POST');
+
+
+//Home
+
+uri('/', 'app\Home', 'index');
+uri('/home', 'app\Home', 'index');
+uri('/home/show-post/{id}', 'app\Home', 'show');
+uri('/home/show-category/{id}', 'app\Home', 'category');
+uri('/home/comment-store', 'app\Home', 'commentStore', 'POST');
+
 
 
 echo '404_ page not found';

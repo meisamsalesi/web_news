@@ -89,18 +89,19 @@ require_once (BASE_PATH . '/template/admin/layouts/header.php');
         </thead>
         <tbody>
 
+        <?php foreach($mostViewPosts as $mostViewPost){?>
           <tr>
             <td>
-              <a class="text-primary" href="">
-                ss
-              </a>
+              <!-- <a class="text-primary" href=""> -->
+              <?= $mostViewPost['id'] ?>
+              <!-- </a> -->
             </td>
             <td>
-              ss
+            <?= $mostViewPost['title'] ?>
             </td>
-            <td><span class="badge badge-secondary">ss</span></td>
+            <td><span class="badge badge-secondary"><?= $mostViewPost['view'] ?></span></td>
           </tr>
-
+            <?php }?>
 
         </tbody>
       </table>
@@ -121,20 +122,21 @@ require_once (BASE_PATH . '/template/admin/layouts/header.php');
           </tr>
         </thead>
         <tbody>
-
+        <?php foreach($mostCommentedPosts as $mostCommentedPost){?>
           <tr>
             <td>
-              <a class="text-primary" href="">
-                ss
+              <!-- <a class="text-primary" href=""> -->
+                <?=$mostCommentedPost['id']?>
               </a>
             </td>
             <td>
-              ss
+              <?=$mostCommentedPost['title']?>
             </td>
-            <td><span class="badge badge-success">ss</span></td>
+            <td><span class="badge badge-success"><?=$mostCommentedPost['comment_count']?></span></td>
           </tr>
-
-
+          <?php }?>
+          
+          
         </tbody>
       </table>
     </div>
@@ -154,23 +156,24 @@ require_once (BASE_PATH . '/template/admin/layouts/header.php');
           </tr>
         </thead>
         <tbody>
-
-
+          
+          <?php foreach($lastComments as $lastComment){?>
+          
           <tr>
             <td>
               <a class="text-primary" href="">
-                ss
+                <?= $lastComment['id']?>
               </a>
             </td>
             <td>
-              ss
+            <?= $lastComment['username']?>
             </td>
             <td>
-              ss
+            <?= $lastComment['comment']?>
             </td>
-            <td><span class="badge badge-warning">ss</span></td>
+            <td><span class="badge badge-warning"><?= $lastComment['status']?></span></td>
           </tr>
-
+          <?php }?>
 
         </tbody>
       </table>
